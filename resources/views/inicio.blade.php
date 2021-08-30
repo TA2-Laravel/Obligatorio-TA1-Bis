@@ -15,5 +15,7 @@
         {{ $p -> cuerpo }} <br /> <br />
 
     @endforeach
+
+    {{ $posts -> links()}}
 </body>
 </html>
