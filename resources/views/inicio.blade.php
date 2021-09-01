@@ -7,13 +7,31 @@
     <title>Document</title>
 </head>
 <body>
+
+    @auth
+    <b>Bienvenido {{ Auth::user()->name }}!!! </b> <br> <br><br>
+    <a href="/newPost">Crear post</a> <br><br><br>
+    @endauth
+
+    @guest 
+    <b><a href="/login">Iniciar sesion</a></b><br><br>
+    @endguest 
+
+
     @foreach ($posts as $p)
+        @isset(Auth::user()->name)
+            @if($p -> autor == Auth::user()->name)
+                <a href="/editPost?id={{ $p -> id }}">Editar post</a> <br> <br>
+            @endif
+        @endisset
+
         Id: {{ $p -> id}} <br />
         Titulo: {{ $p -> titulo}} <br />
         Autor: {{ $p -> autor}} <br />
         Fecha: {{ $p -> created_at}} <br /> <br />
         {{ $p -> cuerpo }} <br /> <br />
 
+        ----------------------- <br><br>
     @endforeach
 
     {{ $posts -> links()}}
