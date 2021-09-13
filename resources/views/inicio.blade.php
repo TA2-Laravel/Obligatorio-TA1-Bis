@@ -9,14 +9,18 @@
 <body>
 
     @auth
-    <b>Bienvenido {{ Auth::user()->name }}!!! </b> <br> <br><br>
+    <b>Bienvenido <a href="/perfil/{{ Auth::user()->id }}"> {{ Auth::user()->name }} </a>!!! </b> <br> <br><br>
     <a href="/newPost">Crear post</a> <br><br><br>
     @endauth
 
     @guest 
     <b><a href="/login">Iniciar sesion</a></b><br><br>
+    <b><a href="/crearUsuario">Crear usuario</a></b><br><br>
+    
     @endguest 
 
+
+    <head> Publicaciones </head>
 
     @foreach ($posts as $p)
         @isset(Auth::user()->name)

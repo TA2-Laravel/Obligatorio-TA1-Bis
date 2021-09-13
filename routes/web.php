@@ -19,6 +19,12 @@ Route::get('/newPost',function () {
     return view('crearPost');
 });
 
+Route::get('/crearUsuario', function () {
+    return view('crearUsuario');
+});
+Route::post('/crearUsuario','App\Http\Controllers\UsuarioController@createUser');
+
+Route::get("/perfil/{d}",'App\Http\Controllers\UsuarioController@showProfile');
 Route::get('/editPost','App\Http\Controllers\PostController@editPostForm');
 Route::post('/editPost','App\Http\Controllers\PostController@editPost');
 
